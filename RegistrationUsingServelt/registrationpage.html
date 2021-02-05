@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Page</title>
+<script>
+        function validate() {
+            var name = document.myform.name.value;
+            var id = document.myform.id.value;
+            var email = document.myform.email.value;
+            var year = document.myform.year.value;
+            var sec = document.myform.section.value;
+            var password = document.myform.password.value;    
+            var symbol = email.indexOf('@');
+            var dot = email.lastIndexOf('.');
+            var len = email.length;
+            if (name == "" || id == "" || email == "" ) {
+                alert('All the fields must be filled!');
+                return false;
+            }
+            if(year == "" || sec == "" || password == "") {
+                alert('All the fields must be filled!');
+                return false;
+            }    
+            if (name.length < 8) {
+                alert("Name must be minimum 8 characters long!");
+                return false;
+            }
+            if (id.length < 8) {
+                alert("ID no must be minimum 8 digits long!");
+                return false;
+            }
+            if (email.length < 8) {
+                alert("Email must be minimum 8 characters long!");
+                return false;
+            } 
+            if (password.length < 6) {
+                alert("Password must be minimum 6 characters long!");
+                return false;
+            }            
+            if (symbol == -1 && dot == -1) {
+                alert("Enter a Valid EmailID!");
+                return false;
+            }
+            else if ((parseInt(dot) - parseInt(symbol)) == 1) {
+                alert("Enter a Valid EmailID!");
+                return false;
+            }
+            else if ((parseInt(len) - parseInt(dot) - 1) < 2) {
+                alert("Enter a Valid EmailID!");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+	<div class="bg"></div>
+	<div class="bg bg2"></div>
+	<div class="bg bg3"></div>
+	<h2 align = "center"> Registration  Page </h2>
+	<div class = "box1">
+	<form action="RegisterServlet" name="myform" method="post" onsubmit="return validate()">
+		<table align="center"><br>
+			<tr>
+				<td>Name of the Student :</td>
+				<td><input type="text" name="name"></td>
+			</tr><br>
+			<tr>
+				<td>ID :</td>
+				<td><input type="text" name="id"></td>
+			</tr><br>
+			<tr>
+				<td>Location :</td>
+				<td><input type="text" name="Location"></td>
+			</tr><br>
+			<tr>
+				<td>Email Id :</td>
+				<td><input type="text" name="email"></td>
+			</tr><br>
+			<tr>
+				<td>Password :</td>
+				<td><input type="password" name="password"></td>
+			</tr><br>
+			<tr>
+			<td> <input type="submit" value="Register"> </td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
